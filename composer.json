@@ -1,0 +1,19 @@
+{
+    "name": "vendor/challenge2",
+    "description": "Projet challenge 2",
+    "autoload": {
+        "psr-4": {
+            "Vendor\\Challenge2\\": "src/",
+            "App\\Entity\\": "src/entities/",
+            "App\\Config\\Core\\": "config/core/",
+            "App\\Repository\\": "src/repository/",
+            "App\\Service\\": "src/service/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mapathe Ndiaye"
+        }
+    ],
+    "require": {}
+}
