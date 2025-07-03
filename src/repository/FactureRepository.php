@@ -36,7 +36,7 @@ class FactureRepository {
      * Récupérer toutes les factures
      */
     public function selectAllFacture(): array {
-        $sql = "SELECT * FROM factures";
+        $sql = "SELECT * FROM facture";
         $stmt = $this->pdo->query($sql);
         $factures = [];
 
@@ -53,8 +53,8 @@ class FactureRepository {
      */
     public function selectFactureCommande(int $id): ?Facture {
         $sql = "SELECT f.*, c.id AS commande_id, c.date_commande, c.personne_id
-                FROM factures f
-                JOIN commandes c ON f.commande_id = c.id
+                FROM facture f
+                JOIN commande c ON f.commande_id = c.id
                 WHERE f.id = :id";
 
         $stmt = $this->pdo->prepare($sql);
@@ -73,7 +73,7 @@ class FactureRepository {
     public function selectFactureProduit(): array {
         $stmt = $this->pdo->query('
             SELECT f.id, f.date_facture, f.type, f.montant_restant, c.id AS commande_id
-            FROM factures f
+            FROM facture f
             JOIN commandes c ON f.commande_id = c.id
         ');
 

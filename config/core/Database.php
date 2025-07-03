@@ -15,9 +15,9 @@ class Database
             $host = 'localhost';
             $dbname = 'ges_auchan';
             $user = 'postgres';
-            $pass = ''; // Mets ton mot de passe ici
+            $pass = 'passer123'; 
 
-            $dsn = "pgsql:host=$host;dbname=$dbname";
+            $dsn = "pgsql:host=$host;port=5432;dbname=$dbname";
             try {
                 self::$pdo = new PDO($dsn, $user, $pass, [
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
