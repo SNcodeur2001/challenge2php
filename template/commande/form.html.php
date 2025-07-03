@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Nouveau Commande</title>
-</head>
-<body class="bg-[#181f13] min-h-screen flex flex-col">
-    <!-- Navbar -->
-   
 
-    <main class="flex-1 flex justify-center items-center">
         <div class="w-full max-w-3xl mx-auto mt-8 bg-[#232d1a] rounded-lg p-8 shadow-lg">
             <h2 class="text-3xl font-bold text-white mb-8">Nouveau Commande</h2>
             <div class="grid grid-cols-2 gap-6 mb-8">
@@ -79,6 +67,3 @@
                 <a  href="/facture" class="bg-lime-400 hover:bg-lime-500 text-white font-semibold px-8 py-2 rounded-full transition">Valider commande</a>
             </div>
         </div>
-    </main>
-</body>
-</html>

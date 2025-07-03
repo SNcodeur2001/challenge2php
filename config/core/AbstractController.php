@@ -19,7 +19,10 @@ abstract class AbstractController
 
     protected function renderHtml(String $view)
     {
-        require_once '../template/layout/partial/header.html.php';
-        require_once '../template/' . $view;
+        ob_start();
+         require_once '../template/'. $view;
+        $contentForLayout = ob_get_clean();
+       
+        require_once '../template/layout/base.layout.php';
     }
 }

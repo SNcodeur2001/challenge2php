@@ -39,5 +39,7 @@ require_once __DIR__ . '/../route/route.web.php';
 // creer abstract controller dans core avec ces methodes
 
 
-//apporter listes des commandes chargés dynamiquement a rendre demain sinon wann di na niou ray !!
-//integrer page de conncexion controller security qui le charge
+//Apporter listes des commandes chargés dynamiquement a rendre demain sinon wann di na niou ray !!
+//in
+//integrer page de conncexion controller securityController qui le charge
+// layout le code commun entre plusieurs pages 

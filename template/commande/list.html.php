@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Liste des commandes</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body class="bg-[#101d0b] min-h-screen text-white">
+
+
     <div class="max-w-6xl mx-auto mt-6 p-6 bg-[#151f11] rounded-lg shadow-lg">
       <!-- Header -->
     
@@ -154,5 +146,3 @@
         </button>
       </div>
     </div>
-  </body>
-</html>
