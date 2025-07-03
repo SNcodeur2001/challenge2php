@@ -7,7 +7,8 @@
             "App\\Entity\\": "src/entities/",
             "App\\Config\\Core\\": "config/core/",
             "App\\Repository\\": "src/repository/",
-            "App\\Service\\": "src/service/"
+            "App\\Service\\": "src/service/",
+            "App\\Controller\\": "controller/"
         }
     },
     "authors": [

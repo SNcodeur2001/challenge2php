@@ -10,5 +10,6 @@ return array(
     'App\\Service\\' => array($baseDir . '/src/service'),
     'App\\Repository\\' => array($baseDir . '/src/repository'),
     'App\\Entity\\' => array($baseDir . '/src/entities'),
+    'App\\Controller\\' => array($baseDir . '/controller'),
     'App\\Config\\Core\\' => array($baseDir . '/config/core'),
 );

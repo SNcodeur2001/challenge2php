@@ -16,6 +16,7 @@ class ComposerStaticInitabcb5b56212a2b65075711852b4364c1
             'App\\Service\\' => 12,
             'App\\Repository\\' => 15,
             'App\\Entity\\' => 11,
+            'App\\Controller\\' => 15,
             'App\\Config\\Core\\' => 16,
         ),
     );
@@ -36,6 +37,10 @@ class ComposerStaticInitabcb5b56212a2b65075711852b4364c1
         'App\\Entity\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/entities',
+        ),
+        'App\\Controller\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/controller',
         ),
         'App\\Config\\Core\\' => 
         array (
