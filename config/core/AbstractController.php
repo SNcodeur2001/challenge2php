@@ -31,5 +31,5 @@ abstract class AbstractController
      protected function renderHtmlLogin(String $view)
     {
         require_once '../template/' . $view;
-            }
+         }
 }
