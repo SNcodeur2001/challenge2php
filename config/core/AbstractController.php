@@ -17,12 +17,14 @@ abstract class AbstractController
 
     abstract public function edit();
 
-    protected function renderHtml(String $view)
+    protected function renderHtml(String $view, array $params = [])
     {
+        extract($params); // rend $commandes disponible dans la vue
+
         ob_start();
-         require_once '../template/'. $view;
+        require_once '../template/' . $view;
         $contentForLayout = ob_get_clean();
-       
+
         require_once '../template/layout/base.layout.php';
     }
 }

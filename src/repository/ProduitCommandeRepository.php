@@ -40,6 +40,15 @@ class ProduitCommandeRepository
         }
         return $results;
     }
+    public function findByCommandeId(int $commandeId): array {
+        $stmt = $this->pdo->prepare('SELECT * FROM produit_commande WHERE commande_id = :commande_id');
+        $stmt->execute(['commande_id' => $commandeId]);
+        $results = [];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            $results[] = \App\Entity\ProduitCommande::toObject($row);
+        }
+        return $results;
+    }
 
     // Enregistrer (insérer ou mettre à jour) un ProduitCommande
     // public function save(ProduitCommande $produitCommande): bool

@@ -20,7 +20,7 @@ require_once __DIR__ . '/../route/route.web.php';
 // Router::resolve();
 
 //logique de gestion du routage 
-// donner a chasue lien une uri 
+// donner a chaque lien une uri 
 // tableau correspondance 
 // uri = controller + action 
 //identidier uri et le mapper au controlleur et l'action a executer tableau (routage)

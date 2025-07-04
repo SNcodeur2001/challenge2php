@@ -37,9 +37,27 @@ class CommandeRepository {
         $sql = "SELECT * FROM commande";
         $stmt = $this->pdo->query($sql);
 
+        $personneRepo = new \App\Repository\PersonneRepository();
+        $produitCommandeRepo = new \App\Repository\ProduitCommandeRepository();
+        $factureRepo = new \App\Repository\FactureRepository();
+
         $commandes = [];
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            $commandes[] = Commande::toObject($row);
+            $commande = \App\Entity\Commande::toObject($row);
+
+            // Hydrater le client
+            $client = $personneRepo->findById($row['personne_id']);
+            $commande->setClient($client);
+
+            // Hydrater les produits commandés
+            $produitCommandes = $produitCommandeRepo->findByCommandeId($commande->getId());
+            $commande->setProduitCommandes($produitCommandes);
+
+            // Hydrater la facture
+            $facture = $factureRepo->findByCommandeId($commande->getId());
+            $commande->setFacture($facture);
+
+            $commandes[] = $commande;
         }
 
         return $commandes;

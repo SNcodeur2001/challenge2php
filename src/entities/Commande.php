@@ -11,6 +11,7 @@ class Commande extends AbstractEntity
     private Client $client;
     private Vendeur $vendeur;
     private array $produitCommandes;
+    private ?Facture $facture = null;
 
     public function __construct(int $id=0, string $date="")
     {
@@ -60,9 +61,28 @@ class Commande extends AbstractEntity
     {
         return $this->produitCommandes;
     }
+    public function setProduitCommandes(array $produitCommandes): void
+    {
+        $this->produitCommandes = $produitCommandes;
+    }
     public function addProduitCommande(Produit $produit): void
     {
         $this->produitCommandes[] = $produit;
+    }
+
+    public function setFacture(?Facture $facture): void
+    {
+        $this->facture = $facture;
+    }
+
+    public function getFacture(): ?Facture
+    {
+        return $this->facture;
+    }
+
+    public function getStatut(): string
+    {
+        return $this->facture ? $this->facture->getStatut()->value : 'En cours';
     }
 
     public static function toObject(array $tableau): static

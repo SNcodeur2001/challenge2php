@@ -83,4 +83,14 @@ class FactureRepository {
         }
         return $results;
     }
+
+    /**
+     * Récupérer une facture par son ID de commande
+     */
+    public function findByCommandeId(int $commandeId): ?Facture {
+        $stmt = $this->pdo->prepare('SELECT * FROM facture WHERE commande_id = :commande_id');
+        $stmt->execute(['commande_id' => $commandeId]);
+        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+        return $row ? \App\Entity\Facture::toObject($row) : null;
+    }
 }

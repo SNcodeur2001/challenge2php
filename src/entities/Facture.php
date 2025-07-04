@@ -8,16 +8,17 @@ class Facture extends AbstractEntity
 {
     private int $id;
     private string $date;
-    private float $montant;
+    private float $montant_restant;
     private Commande $commande;
     private StatutEnum $statut;
     private ?Paiement $paiement = null;
 
-    public function __construct(int $id, string $date, float $montant)
+    public function __construct(int $id, string $date, float $montant_restant)
     {
         $this->id = $id;
         $this->date = $date;
-        $this->montant = $montant;
+        $this->montant_restant = $montant_restant;
+        $this->statut = StatutEnum::IMPAYE; // Assuming a default status
     }
 
     public function getId(): int
@@ -42,12 +43,12 @@ class Facture extends AbstractEntity
 
     public function getMontant(): float
     {
-        return $this->montant;
+        return $this->montant_restant;
     }
 
-    public function setMontant(float $montant): void
+    public function setMontant(float $montant_restant): void
     {
-        $this->montant = $montant;
+        $this->montant_restant = $montant_restant;
     }
     public function getCommande(): Commande
     {
@@ -74,22 +75,23 @@ class Facture extends AbstractEntity
     {
         $this->paiement = $paiement;
     }
-      public static function toObject(array $tableau): static
+    public static function toObject(array $tableau): static
     {
         return new static(
             $tableau['id'],
-            $tableau['date'],
-            $tableau['montant']
+            $tableau['date_facture'],
+            (float)($tableau['montant_restant'] ?? 0)
         );
     }
 
-    public function toArray(Object $object):array{
+    public function toArray(Object $object): array
+    {
         return [
             'id' => $this->id,
             'date' => $this->date,
-            'montant' => $this->montant,
-          
-            
+            'montant' => $this->montant_restant,
+
+
         ];
     }
 
