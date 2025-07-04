@@ -3,12 +3,16 @@
         <span class="text-white text-xl font-semibold">Le Ndanan du code</span>
       </div>
       <div class="flex items-center space-x-8">
-        <a href="#" class="text-gray-200 hover:text-lime-400">Dashboard</a>
+        <a href="/list" class="text-gray-200 hover:text-lime-400">Dashboard</a>
         <a href="/list" class="text-gray-200 hover:text-lime-400">Commandes</a>
-        <a href="#" class="text-gray-200 hover:text-lime-400">clients</a>
+        <a href="#" class="text-gray-200 hover:text-lime-400">Clients</a>
         <a href="#" class="text-gray-200 hover:text-lime-400">Produits</a>
         <a href="#" class="text-gray-200 hover:text-lime-400">Rapport</a>
-        <div class="ml-6">
+        <div class="ml-6 flex items-center space-x-4">
+            <?php if (isset($_SESSION['user_email'])): ?>
+                <span class="text-gray-300 text-sm"><?= htmlspecialchars($_SESSION['user_email']) ?></span>
+            <?php endif; ?>
+            <a href="/logout" class="text-gray-200 hover:text-red-400 text-sm">Déconnexion</a>
           <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#232d1a] text-gray-300">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>

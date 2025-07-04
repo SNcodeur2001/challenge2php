@@ -1,23 +1,19 @@
 <?php
 
-//route/route.web.php
 use App\Config\Core\Router;
+use App\Controller\CommandeController;
+use App\Controller\SecurityController;
 
-// Définition des routes
-Router::$routes = [
-    "/commande" => [
-        "controller" => "App\\Controller\\CommandeController",
-        "action" => "create"
-    ],
-    "/list" => [
-        "controller" => "App\\Controller\\CommandeController",
-        "action" => "index"
-    ],
-    "/facture" => [
-        "controller" => "App\\Controller\\FactureController",
-        "action" => "show"
-    ]
-];
+// Routes de sécurité
+Router::get('/', SecurityController::class, 'index');
+Router::get('/login', SecurityController::class, 'login');
+Router::post('/authenticate', SecurityController::class, 'authenticate');
+Router::get('/logout', SecurityController::class, 'logout');
 
-// Appel du routeur
+// Routes des commandes (protégées)
+Router::get('/list', CommandeController::class, 'index');
+Router::get('/facture', CommandeController::class, 'show');
+Router::get('/form', CommandeController::class, 'create');
+
+// Résoudre la route
 Router::resolve();
