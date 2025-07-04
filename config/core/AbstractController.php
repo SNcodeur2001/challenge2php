@@ -28,8 +28,8 @@ abstract class AbstractController
         require_once '../template/layout/base.layout.php';
     }
 
-     protected function renderHtmlLogin(String $view)
+    protected function renderHtmlLogin(String $view)
     {
         require_once '../template/' . $view;
-         }
+    }
 }
