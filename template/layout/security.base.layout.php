@@ -9,7 +9,7 @@
   <body class="bg-[#101d0b] min-h-screen text-white">
     <!-- Navbar -->
     
-    <main class="max-w-5xl mx-auto mt-8 p-8">
+    <main class="max-w-5xl mx-auto mt-8 p-8 flex items-center justify-center">
         <?php
             echo $contentForLayout
         ?>

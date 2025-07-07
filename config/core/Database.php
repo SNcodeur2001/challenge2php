@@ -12,12 +12,30 @@ class Database
     public static function getConnection(): PDO
     {
         if (self::$pdo === null) {
-            $host = 'localhost';
-            $dbname = 'ges_auchan';
-            $user = 'postgres';
-            $pass = 'passer123'; 
+            // Lire les variables depuis .env
+            $driver = $_ENV['DB_DRIVER'];
+            $host = $_ENV['DB_HOST'] ?? 'localhost';
+            $dbname = $_ENV['DB_NAME'];
+            $port = $_ENV['DB_PORT'] ?? 3306;
+            $user = $_ENV['DB_USER'] ?? '';
+            $pass = $_ENV['DB_PASSWORD'] ?? '';
 
-            $dsn = "pgsql:host=$host;port=5432;dbname=$dbname";
+            switch ($driver) {
+                case 'pgsql':
+                    $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
+                    break;
+                case 'mysql':
+                    $dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4";
+                    break;
+                case 'sqlite':
+                    $dsn = "sqlite:" . ($_ENV['DB_PATH'] ?? '');
+                    $user = null;
+                    $pass = null;
+                    break;
+                default:
+                    throw new \Exception("Driver non supporté : $driver");
+            }
+
             try {
                 self::$pdo = new PDO($dsn, $user, $pass, [
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
@@ -26,6 +44,7 @@ class Database
                 die("Erreur de connexion : " . $e->getMessage());
             }
         }
+
         return self::$pdo;
     }
 }

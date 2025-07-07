@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Repository;
 
 use App\Entity\Personne;
@@ -6,24 +7,86 @@ use App\Entity\Client;
 use App\Entity\Vendeur;
 use App\Config\Core\Database;
 
-class PersonneRepository {
-    
+class PersonneRepository
+{
     private \PDO $pdo;
 
-    public function __construct() {
+    public function __construct()
+    {
+
         $this->pdo = Database::getConnection();
     }
 
-    public function selectAll(): array {
-        $stmt = $this->pdo->query("SELECT * FROM personne");
-        $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    public function selectByLoginAndPassword(string $login, string $password): Vendeur | null
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM personne WHERE login = :login AND password = :password");
+        $stmt->execute(['login' => $login, 'password' => $password]);
+        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+        
 
-        $personnes = [];
-        foreach ($rows as $row) {
-            $personnes[] = $this->mapToEntity($row);
+        if (!$row) {
+            return null;
         }
-        return $personnes;
+
+        $vendeur = Vendeur::toObject($row);
+        
+        return $vendeur;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // private \PDO $pdo;
+
+    // public function __construct() {
+    //     $this->pdo = Database::getConnection();
+    // }
+
+    // public function selectAll(): array {
+    //     $stmt = $this->pdo->query("SELECT * FROM personne");
+    //     $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+    //     $personnes = [];
+    //     foreach ($rows as $row) {
+    //         $personnes[] = $this->mapToEntity($row);
+    //     }
+    //     return $personnes;
+    // }
 
     public function findById(int $id): ?Personne {
         $stmt = $this->pdo->prepare("SELECT * FROM personne WHERE id = :id");
@@ -34,7 +97,7 @@ class PersonneRepository {
     }
 
     private function mapToEntity(array $row): Personne {
-        if (isset($row['type']) && strtolower($row['type']) === 'client') {
+        if (isset($row['type']) && $row['type'] === 'Client') {
             return Client::toObject($row);
         } else {
             return Vendeur::toObject($row);

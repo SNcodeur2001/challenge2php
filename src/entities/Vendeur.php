@@ -7,15 +7,15 @@ namespace App\Entity;
 {
 
     private string $login;
-    private string $motDePasse;
+    private string $password;
     private ?array $commandes = null;
     private ?array $paiements = null;
 
-    public function __construct(int $id = 0, string $nom = "", string $login = "", string $motDePasse = " ")
+    public function __construct(int $id = 0, String $nom = "", String $login = "", String $password = " ")
     {
         parent::__construct($id, $nom, TypeEnum::VENDEUR);
         $this->login = $login;
-        $this->motDePasse = $motDePasse;
+        $this->password = $password;
        
     }
 
@@ -29,14 +29,14 @@ namespace App\Entity;
         $this->login = $login;
     }
 
-    public function getMotDePasse(): string
+    public function getpassword(): string
     {
-        return $this->motDePasse;
+        return $this->password;
     }
 
-    public function setMotDePasse(string $motDePasse): void
+    public function setpassword(string $password): void
     {
-        $this->motDePasse = $motDePasse;
+        $this->password = $password;
     }
     public function getCommandes(): array
     {
@@ -63,7 +63,7 @@ public static function toObject(array $row): static
             $row['id'],
             $row['nom'],
             $row['login'],
-            $row['motDePasse']
+            $row['password']
         );
     }
 
@@ -72,7 +72,7 @@ public static function toObject(array $row): static
         return [
             'id' => $this->id,
             'login' => $this->login,
-            'motDepasse' => $this->motDePasse,
+            'password' => $this->password,
             'nom' => $this->nom,
             
         ];

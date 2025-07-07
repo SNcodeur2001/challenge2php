@@ -44,7 +44,7 @@
       </svg>
     </button>
 
-    <a href="/commande" class="
+    <a href="/form" class="
             bg-lime-400 text-[#101d0b] px-6 py-2 rounded-lg font-semibold hover:bg-lime-500 transition">Passer commande</a>
       </div>
 

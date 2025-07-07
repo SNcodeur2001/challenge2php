@@ -42,7 +42,7 @@
                 </div>
             <?php endif; ?>
 
-            <form method="POST" action="/authenticate" class="space-y-6">
+            <form method="POST" action="/login" class="space-y-6">
                 <!-- Email -->
                 <div>
                     <label for="email" class="block text-gray-300 text-sm font-medium mb-2">
@@ -52,10 +52,9 @@
                         Adresse email
                     </label>
                     <input 
-                        type="email" 
+                        type="text" 
                         id="email" 
                         name="email" 
-                        required
                         class="w-full bg-[#0f1a0a] border border-[#263a1d] rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-lime-400 focus:ring-2 focus:ring-lime-400/50 transition duration-200"
                         placeholder="admin@ndanan.com"
                         value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
@@ -74,7 +73,6 @@
                         type="password" 
                         id="password" 
                         name="password" 
-                        required
                         class="w-full bg-[#0f1a0a] border border-[#263a1d] rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-lime-400 focus:ring-2 focus:ring-lime-400/50 transition duration-200"
                         placeholder="••••••••"
                     >
